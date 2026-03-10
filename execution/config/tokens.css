@@ -1,0 +1,44 @@
+@layer base {
+  :root {
+    /* DevFlow Direction 4: Structured Synthwave Colors */
+    --base: 273 35% 16%; /* #2A1B38 */
+    --surface: 270 30% 24%; /* #3A2A4E */
+    --border-val: 268 30% 35%; /* #583F75 */
+    --text-primary: 340 100% 98%; /* #FFF0F5 */
+    --text-secondary: 275 39% 82%; /* #D4BEE4 */
+    --accent-1: 28 100% 50%; /* #FF8A00 (Orange) */
+    --accent-2: 282 100% 50%; /* #B300FF (Purple) */
+    --signal: 180 100% 50%; /* #00FFFF */
+
+    /* Shadcn Mappings */
+    --background: var(--base);
+    --foreground: var(--text-primary);
+    
+    --card: var(--surface);
+    --card-foreground: var(--text-primary);
+    
+    --popover: var(--surface);
+    --popover-foreground: var(--text-primary);
+    
+    --primary: var(--accent-1);
+    --primary-foreground: var(--base);
+    
+    --secondary: var(--accent-2);
+    --secondary-foreground: var(--text-primary);
+    
+    --muted: var(--surface);
+    --muted-foreground: var(--text-secondary);
+    
+    --accent: var(--accent-2);
+    --accent-foreground: var(--text-primary);
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: var(--border-val);
+    --input: var(--surface);
+    --ring: var(--signal);
+
+    --radius: 0.5rem; /* 8px for Balanced Structured Synthwave */
+  }
+}

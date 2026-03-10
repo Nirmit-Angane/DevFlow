@@ -1,0 +1,46 @@
+from state_manager import add_design_direction, transition
+
+directions = [
+    {
+        "name": "Terminal Neon",
+        "color_system": {"base": "#0D0D12", "surface": "#1A1A24", "border": "#303040", "text-primary": "#E2E8F0", "text-secondary": "#94A3B8", "accent-1": "#00FF66", "accent-2": "#FF00FF", "signal": "#FFD700"},
+        "typography": {"display": "Fira Code", "body": "Inter"},
+        "layout_archetype": {"grid": "8px rigid", "gap": "16px", "container": "1200px Max"},
+        "interaction_philosophy": {"duration": "150ms", "easing": "linear (snappy)"},
+        "visual_metaphor_fit": "High", "emotional_fit": "Structured, Retro", "audience_fit": "High",
+        "border_radius": "0px", "headline": "Map Your Architecture. Hack the Flow.", "sub_headline": "Drag, drop, and wire your application before you write a single line of code.", "primary_cta": "Initialize Project"
+    },
+    {
+        "name": "Cyberpunk Blueprint",
+        "color_system": {"base": "#000B18", "surface": "#001A33", "border": "#003366", "text-primary": "#C5E2FF", "text-secondary": "#6B9ECF", "accent-1": "#00E5FF", "accent-2": "#FF3366", "signal": "#FF9900"},
+        "typography": {"display": "JetBrains Mono", "body": "Roboto Mono"},
+        "layout_archetype": {"grid": "12px fluid", "gap": "24px", "container": "Full-width"},
+        "interaction_philosophy": {"duration": "300ms", "easing": "ease-in-out"},
+        "visual_metaphor_fit": "Very High", "emotional_fit": "Retro, Playful", "audience_fit": "Medium-High",
+        "border_radius": "4px", "headline": "Your Codebase, Visualized.", "sub_headline": "The ultimate visual planning tool for modern developers and indie hackers.", "primary_cta": "Enter the Matrix"
+    },
+    {
+        "name": "Playful Arcade",
+        "color_system": {"base": "#1E1B4B", "surface": "#312E81", "border": "#4338CA", "text-primary": "#F8FAFC", "text-secondary": "#CBD5E1", "accent-1": "#FBBF24", "accent-2": "#F472B6", "signal": "#34D399"},
+        "typography": {"display": "Press Start 2P", "body": "Space Grotesk"},
+        "layout_archetype": {"grid": "16px blocky", "gap": "32px", "container": "1024px"},
+        "interaction_philosophy": {"duration": "400ms", "easing": "spring (bouncy)"},
+        "visual_metaphor_fit": "Medium", "emotional_fit": "Playful, Retro", "audience_fit": "Medium",
+        "border_radius": "16px", "headline": "Press Start on Your Next Big App.", "sub_headline": "Snap logic blocks together and watch your workflow come to life instantly.", "primary_cta": "Insert Coin (Start Free)"
+    },
+    {
+        "name": "Structured Synthwave",
+        "color_system": {"base": "#2A1B38", "surface": "#3A2A4E", "border": "#583F75", "text-primary": "#FFF0F5", "text-secondary": "#D4BEE4", "accent-1": "#FF8A00", "accent-2": "#B300FF", "signal": "#00FFFF"},
+        "typography": {"display": "Orbitron", "body": "Work Sans"},
+        "layout_archetype": {"grid": "10px isometric", "gap": "20px", "container": "1440px"},
+        "interaction_philosophy": {"duration": "250ms", "easing": "cubic-bezier"},
+        "visual_metaphor_fit": "High", "emotional_fit": "Structured, Playful", "audience_fit": "High",
+        "border_radius": "8px", "headline": "Master Your System Architecture.", "sub_headline": "Visually connect the dots between your API, UI, and logic before coding.", "primary_cta": "Build the Blueprint"
+    }
+]
+
+for d in directions:
+    add_design_direction(d)
+
+transition("preview")
+print("Added directions and transitioned to preview phase.")
