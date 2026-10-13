@@ -33,9 +33,9 @@ const initialNodes: DevFlowNode[] = [
 ];
 
 const initialEdges: Edge[] = [
-    { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', animated: true, style: { stroke: 'hsl(28, 100%, 50%)', strokeWidth: 2 } },
-    { id: 'e2-3', source: '2', target: '3', type: 'smoothstep', animated: true, style: { stroke: 'hsl(180, 100%, 50%)', strokeWidth: 2 } },
-    { id: 'e3-4', source: '3', target: '4', type: 'smoothstep', animated: true, style: { stroke: 'hsl(282, 100%, 50%)', strokeWidth: 2, strokeDasharray: '5 5' } }
+    { id: 'e1-2', source: '1', target: '2', type: 'smoothstep', animated: true, style: { stroke: '#0c141c', strokeWidth: 2.5 } },
+    { id: 'e2-3', source: '2', target: '3', type: 'smoothstep', animated: true, style: { stroke: '#dc5c1c', strokeWidth: 2.5 } },
+    { id: 'e3-4', source: '3', target: '4', type: 'smoothstep', animated: true, style: { stroke: '#0f756e', strokeWidth: 2.5, strokeDasharray: '5 5' } }
 ];
 
 export type StoreState = {
@@ -88,7 +88,7 @@ const useStore = create<StoreState>()(
             },
             onConnect: (connection: Connection) => {
                 set({
-                    edges: addEdge({ ...connection, type: 'smoothstep', style: { stroke: 'hsl(28, 100%, 50%)', strokeWidth: 2 }, animated: true }, get().edges),
+                    edges: addEdge({ ...connection, type: 'smoothstep', style: { stroke: '#0c141c', strokeWidth: 2.5 }, animated: true }, get().edges),
                 });
             },
             addNode: (type: string, typeName: string, color: string) => {
