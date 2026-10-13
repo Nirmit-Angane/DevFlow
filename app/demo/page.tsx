@@ -21,6 +21,8 @@ import html2canvas from "html2canvas";
 
 const nodeTypes: any = {
     devflow: DevFlowNode,
+    custom: DevFlowNode,
+    default: DevFlowNode,
 };
 
 function Flow() {

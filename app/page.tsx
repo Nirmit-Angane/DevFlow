@@ -107,15 +107,24 @@ export default function Home() {
 
             const structure = await aiService.generateWorkflow(project, formData.nodeStructure);
 
+            const typeColorMap: Record<string, string> = {
+                'Page': 'signal',
+                'Feature': 'accent1',
+                'API': 'accent2',
+                'Database': 'textPrimary',
+                'Logic': 'signal',
+            };
+
             const newNodes = structure.nodes.map((n: any, index: number) => ({
                 id: n.id,
-                type: 'custom',
-                position: { x: 250 * (index % 3), y: 150 * Math.floor(index / 3) },
+                type: 'devflow',
+                position: { x: 80 + 320 * (index % 3), y: 80 + 190 * Math.floor(index / 3) },
                 data: {
                     title: n.title,
-                    type: n.type,
-                    description: n.description,
-                    color: index === 0 ? 'textPrimary' : (index % 2 === 0 ? 'accent1' : 'signal')
+                    label: n.title,
+                    type: n.type || 'Feature',
+                    description: n.description || '',
+                    color: typeColorMap[n.type] || (index === 0 ? 'textPrimary' : (index % 2 === 0 ? 'accent1' : 'signal'))
                 }
             }));
 
@@ -125,7 +134,7 @@ export default function Home() {
                 target: c.target,
                 type: 'smoothstep',
                 animated: true,
-                style: { stroke: '#0f756e', strokeWidth: 2 }
+                style: { stroke: 'hsl(180, 100%, 50%)', strokeWidth: 2 }
             }));
 
             setArchitecture(newNodes, newEdges);
