@@ -38,8 +38,19 @@ export const aiService = {
         });
 
         if (!response.ok) {
-            const err = await response.json();
-            throw new Error(err.error || 'Failed to generate workflow');
+            let errorMsg = 'Failed to generate workflow';
+            try {
+                const err = await response.json();
+                errorMsg = err.error || err.message || errorMsg;
+            } catch {
+                try {
+                    const text = await response.text();
+                    if (text) errorMsg = text;
+                } catch {
+                    // fallback
+                }
+            }
+            throw new Error(errorMsg);
         }
 
         const data = await response.json();
@@ -68,8 +79,19 @@ export const aiService = {
         });
 
         if (!response.ok) {
-            const err = await response.json();
-            throw new Error(err.error || 'Failed to generate SOP');
+            let errorMsg = 'Failed to generate SOP';
+            try {
+                const err = await response.json();
+                errorMsg = err.error || err.message || errorMsg;
+            } catch {
+                try {
+                    const text = await response.text();
+                    if (text) errorMsg = text;
+                } catch {
+                    // fallback
+                }
+            }
+            throw new Error(errorMsg);
         }
 
         const data = await response.json();
