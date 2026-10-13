@@ -4,25 +4,17 @@
 
 @layer base {
     :root {
-        /* DevFlow Direction 4: Structured Synthwave Colors */
-        --base: 273 35% 16%;
-        /* #2A1B38 */
-        --surface: 270 30% 24%;
-        /* #3A2A4E */
-        --border-val: 268 30% 35%;
-        /* #583F75 */
-        --text-primary: 340 100% 98%;
-        /* #FFF0F5 */
-        --text-secondary: 275 39% 82%;
-        /* #D4BEE4 */
-        --accent-1: 28 100% 50%;
-        /* #FF8A00 (Orange) */
-        --accent-2: 282 100% 50%;
-        /* #B300FF (Purple) */
-        --signal: 180 100% 50%;
-        /* #00FFFF */
+        /* Retro-Futurism Space-Age Tactile Palette */
+        --base: 32 49% 74%;           /* #dfbe9b Warm Sandy-Beige */
+        --surface: 27 74% 94%;        /* #fbf0e6 Pale Cream */
+        --border-val: 210 40% 8%;     /* #0c141c Solid Deep Navy */
+        --text-primary: 210 40% 8%;   /* #0c141c Solid Deep Navy */
+        --text-secondary: 209 11% 44%;/* #63707c Muted Navy-Gray */
+        --accent-1: 20 78% 48%;       /* #dc5c1c Burnt Orange */
+        --signal: 175 77% 26%;        /* #0f756e Vintage Teal */
+        --accent-2: 205 32% 66%;      /* #8faec4 Retro Slate Blue */
 
-        /* Shadcn Mappings */
+        /* Core mappings */
         --background: var(--base);
         --foreground: var(--text-primary);
 
@@ -33,33 +25,32 @@
         --popover-foreground: var(--text-primary);
 
         --primary: var(--accent-1);
-        --primary-foreground: var(--base);
+        --primary-foreground: 0 0% 100%;
 
-        --secondary: var(--accent-2);
-        --secondary-foreground: var(--text-primary);
+        --secondary: var(--signal);
+        --secondary-foreground: 0 0% 100%;
 
         --muted: var(--surface);
         --muted-foreground: var(--text-secondary);
 
-        --accent: var(--accent-2);
-        --accent-foreground: var(--text-primary);
+        --accent: var(--accent-1);
+        --accent-foreground: 0 0% 100%;
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 210 40% 98%;
 
         --border: var(--border-val);
         --input: var(--surface);
-        --ring: var(--signal);
+        --ring: var(--accent-1);
 
-        --radius: 0.5rem;
-        /* 8px for Balanced Structured Synthwave */
+        --radius: 1.5rem;
     }
 }
 
 body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-family: var(--font-body), sans-serif;
+    background-color: #dfbe9b;
+    color: #0c141c;
+    font-family: var(--font-body), 'Space Grotesk', sans-serif;
 }
 
 h1,
@@ -68,5 +59,92 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: var(--font-display), sans-serif;
+    font-family: var(--font-display), 'Syncopate', sans-serif;
+    letter-spacing: -0.02em;
 }
+
+/* Tactile Retro Brutalist Helpers */
+.retro-card {
+    background-color: #fbf0e6;
+    border: 2.5px solid #0c141c;
+    box-shadow: 5px 5px 0 #0c141c;
+}
+
+.retro-card-dark {
+    background-color: #08131d;
+    border: 2.5px solid #0c141c;
+    box-shadow: 6px 6px 0 #0c141c;
+    color: #ffffff;
+}
+
+.retro-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 2.5px solid #0c141c;
+    background-color: #dc5c1c;
+    color: #ffffff;
+    font-family: var(--font-display), 'Syncopate', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 5px 0 #0c141c;
+    transition: all 0.15s ease;
+}
+
+.retro-btn:hover {
+    background-color: #e66627;
+}
+
+.retro-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #0c141c;
+}
+
+.retro-btn-teal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 2.5px solid #0c141c;
+    background-color: #0f756e;
+    color: #ffffff;
+    font-family: var(--font-display), 'Syncopate', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 5px 0 #0c141c;
+    transition: all 0.15s ease;
+}
+
+.retro-btn-teal:hover {
+    background-color: #158b83;
+}
+
+.retro-btn-teal:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #0c141c;
+}
+
+.retro-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 2.5px solid #0c141c;
+    background-color: #fbf0e6;
+    color: #0c141c;
+    font-family: var(--font-display), 'Syncopate', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 0 #0c141c;
+    transition: all 0.15s ease;
+}
+
+.retro-btn-outline:hover {
+    background-color: #f5e4d3;
+}
+
+.retro-btn-outline:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #0c141c;
+}

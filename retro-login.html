@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retro-Futurism Login - Tomorrow Archive</title>
+  
+  <!-- Google Fonts for Retro-Futuristic Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables & Reset */
+    :root {
+      --bg-desert: #dfbe9b;
+      --card-border: #0c141c;
+      --panel-dark: #08131d;
+      --panel-cream: #fbf0e6;
+      --accent-orange: #dc5c1c;
+      --accent-orange-hover: #e56626;
+      --accent-teal: #0f756e;
+      --radar-ring: #3e5363;
+      --radar-planet: #dd5c22;
+      --radar-yellow: #e8c355;
+      --gauge-blue: #8baec0;
+      --text-muted-dark: #6b899b;
+      --text-muted-light: #7d858b;
+      --input-bg: rgba(238, 222, 207, 0.55);
+      
+      --font-display: 'Syncopate', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --font-body: 'Space Grotesk', -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      width: 100%;
+      background-color: var(--bg-desert);
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+      user-select: none;
+    }
+
+    /* Floating Decorative Elements */
+    .decor-circle {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      width: 5rem;
+      height: 5rem;
+      border: 8px solid rgba(223, 139, 91, 0.9);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .decor-bars {
+      position: absolute;
+      bottom: 2rem;
+      right: 2.5rem;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .decor-bar {
+      width: 0.625rem;
+      border-radius: 9999px;
+    }
+    .bar-teal { height: 3.25rem; background-color: #27847a; }
+    .bar-orange { height: 2rem; background-color: #dc5f2b; }
+    .bar-blue { height: 3.75rem; background-color: #8faec4; }
+    .bar-yellow { height: 2.5rem; background-color: #eec85d; }
+
+    /* Main Login Card */
+    .login-card {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 780px;
+      background-color: var(--card-border);
+      border: 3px solid var(--card-border);
+      border-radius: 36px;
+      box-shadow: 0 20px 50px rgba(15, 20, 25, 0.25);
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+    }
+
+    /* LEFT PANEL */
+    .panel-left {
+      width: 52%;
+      background-color: var(--panel-dark);
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 3px solid var(--card-border);
+    }
+
+    .left-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      letter-spacing: 0.25em;
+      font-weight: 700;
+      color: #577486;
+      text-transform: uppercase;
+    }
+
+    /* Radar / Portal Graphic */
+    .radar-wrapper {
+      margin: 1.5rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .radar-circle {
+      position: relative;
+      width: 13.5rem;
+      height: 13.5rem;
+      border-radius: 50%;
+      border: 12px solid var(--radar-ring);
+      background-color: var(--accent-teal);
+      overflow: hidden;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .radar-dots {
+      position: absolute;
+      inset: 0;
+      opacity: 0.45;
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.8) 1.2px, transparent 1.2px);
+      background-size: 13px 13px;
+    }
+
+    .radar-planet {
+      position: absolute;
+      bottom: -0.75rem;
+      right: -0.75rem;
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      background-color: var(--radar-planet);
+    }
+
+    .radar-pill-yellow {
+      position: absolute;
+      top: 42%;
+      right: 43%;
+      width: 1.35rem;
+      height: 2.15rem;
+      border-radius: 9999px;
+      background-color: var(--radar-yellow);
+      transform: rotate(-35deg);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .radar-pill-white {
+      position: absolute;
+      bottom: 2.25rem;
+      left: 1.5rem;
+      width: 4.75rem;
+      height: 0.6rem;
+      border-radius: 9999px;
+      background-color: #ffffff;
+      transform: rotate(-14deg);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      z-index: 2;
+    }
+
+    /* Left Typography */
+    .left-footer h1 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .left-footer p {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--text-muted-dark);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-top: 0.35rem;
+    }
+
+    /* RIGHT PANEL */
+    .panel-right {
+      width: 48%;
+      background-color: var(--panel-cream);
+      padding: 2rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .right-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.85rem;
+      border-bottom: 1.5px solid var(--card-border);
+    }
+
+    .right-header h2 {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--card-border);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .right-header p {
+      font-family: var(--font-mono);
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: var(--text-muted-light);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+
+    .dial-gauge {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      border: 2px solid var(--card-border);
+      background-color: var(--gauge-blue);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .dial-tick {
+      width: 2px;
+      height: 0.75rem;
+      background-color: var(--card-border);
+      border-radius: 9999px;
+      position: absolute;
+      top: 0.25rem;
+    }
+
+    /* Form Fields */
+    .form-wrapper {
+      margin-top: 1.75rem;
+    }
+
+    .field-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: #3d454d;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+
+    .pill-input {
+      width: 100%;
+      border-radius: 9999px;
+      border: 2px solid var(--card-border);
+      background-color: var(--input-bg);
+      padding: 0.75rem 1.25rem;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--card-border);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .pill-input::placeholder {
+      color: #9e9084;
+    }
+
+    .pill-input:focus {
+      border-color: var(--card-border);
+      background-color: #eedecf;
+      box-shadow: 0 0 0 2px rgba(220, 92, 28, 0.4);
+    }
+
+    .pill-button {
+      margin-top: 1.15rem;
+      width: 100%;
+      border-radius: 9999px;
+      border: 2.5px solid var(--card-border);
+      background-color: var(--accent-orange);
+      color: #ffffff;
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 5px 0 var(--card-border);
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pill-button:hover {
+      background-color: var(--accent-orange-hover);
+    }
+
+    .pill-button:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 var(--card-border);
+    }
+
+    /* Footer Indicator Dots */
+    .indicator-dots {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      border: 1px solid rgba(12, 20, 28, 0.35);
+    }
+    .dot-green { background-color: #75a557; }
+    .dot-yellow { background-color: #e0b741; }
+    .dot-red { background-color: #dc5038; }
+
+    /* Responsiveness: Mobile Collapse */
+    @media (max-width: 768px) {
+      .login-card {
+        flex-direction: column;
+        border-radius: 28px;
+      }
+      .panel-left {
+        width: 100%;
+        border-right: none;
+        border-bottom: 3px solid var(--card-border);
+        padding: 1.75rem 1.5rem;
+      }
+      .panel-right {
+        width: 100%;
+        padding: 1.75rem 1.5rem;
+      }
+      .radar-circle {
+        width: 11.5rem;
+        height: 11.5rem;
+        border-width: 10px;
+      }
+      .decor-circle {
+        top: 1rem;
+        left: 1rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-width: 6px;
+      }
+      .decor-bars {
+        bottom: 1rem;
+        right: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Background Decorative Elements -->
+  <div class="decor-circle" aria-hidden="true"></div>
+
+  <div class="decor-bars" aria-hidden="true">
+    <div class="decor-bar bar-teal"></div>
+    <div class="decor-bar bar-orange"></div>
+    <div class="decor-bar bar-blue"></div>
+    <div class="decor-bar bar-yellow"></div>
+  </div>
+
+  <!-- Main Login Component -->
+  <main class="login-card">
+    
+    <!-- LEFT PANEL: Welcome & Portal Radar Graphic -->
+    <section class="panel-left">
+      <div class="left-header">
+        <span>TOMORROW ARCHIVE</span>
+        <span>75</span>
+      </div>
+
+      <div class="radar-wrapper">
+        <div class="radar-circle" role="img" aria-label="Retro radar portal illustration">
+          <div class="radar-dots"></div>
+          <div class="radar-planet"></div>
+          <div class="radar-pill-yellow"></div>
+          <div class="radar-pill-white"></div>
+        </div>
+      </div>
+
+      <div class="left-footer">
+        <h1>WELCOME<br>BACK</h1>
+        <p>SIGN IN TO YOUR ACCOUNT</p>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL: Access Console & Form -->
+    <section class="panel-right">
+      <div>
+        <div class="right-header">
+          <div>
+            <h2>ACCESS CONSOLE</h2>
+            <p>SYSTEM READY</p>
+          </div>
+          <div class="dial-gauge" aria-hidden="true">
+            <div class="dial-tick"></div>
+          </div>
+        </div>
+
+        <form class="form-wrapper" onsubmit="event.preventDefault(); alert('Access Granted: Connecting to Tomorrow Archive...');">
+          <label for="email-input" class="field-label">EMAIL</label>
+          <input
+            id="email-input"
+            type="email"
+            class="pill-input"
+            placeholder="you@example.com"
+            required
+            autocomplete="email"
+          />
+
+          <button type="submit" class="pill-button">
+            CONTINUE
+          </button>
+        </form>
+      </div>
+
+      <div class="indicator-dots" aria-label="Console diagnostic indicators">
+        <span class="dot dot-green" title="System Online"></span>
+        <span class="dot dot-yellow" title="Data Bus Synchronized"></span>
+        <span class="dot dot-red" title="Security Engaged"></span>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
